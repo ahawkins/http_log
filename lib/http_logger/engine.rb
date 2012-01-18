@@ -1,5 +1,7 @@
 module HttpLogger
   class Engine < ::Rails::Engine
+    isolate_namespace HttpLogger
+
     initializer "http_logger" do |app|
       app.middleware.use HttpLogger::Middleware
     end

@@ -13,8 +13,8 @@ module HttpLogger
     field :headers, :type => Hash, :default => {}
     field :params, :type => Hash, :default => {}
 
-    def self.create_from_request(env)
-      create do |req|
+    def self.from_request(env)
+      new do |req|
         req.http_method = env.request_method
         req.url = env.url
         req.headers = env.header_hash

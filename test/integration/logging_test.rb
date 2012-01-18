@@ -90,4 +90,32 @@ class LoggingTest < ActionDispatch::IntegrationTest
 
     assert_equal 'foo=bar', req.raw_post
   end
+
+  test "custom callbacks are executed" do
+    HttpLogger.with_request do |env, log|
+      log.headers['foo'] = 'bar'
+    end
+
+    post echo_path
+
+    req = HttpLogger::Request.first
+
+    assert_equal 'bar', req.headers['foo']
+  end
+
+  test "multiple callbacks are allowed" do
+    HttpLogger.with_request do |env, log|
+      log.headers['foo'] = 'bar'
+    end
+
+    HttpLogger.with_request do |env, log|
+      log.headers['baz'] = 'quz'
+    end
+
+    post echo_path
+
+    req = HttpLogger::Request.first
+
+    assert_equal 'quz', req.headers['baz']
+  end
 end
