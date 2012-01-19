@@ -1,5 +1,3 @@
-require 'pp'
-
 module HttpLogger
   class Request
     include Mongoid::Document
