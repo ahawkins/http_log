@@ -7,11 +7,10 @@ require "http_logger/version"
 Gem::Specification.new do |s|
   s.name        = "http_logger"
   s.version     = HttpLogger::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of HttpLogger."
-  s.description = "TODO: Description of HttpLogger."
+  s.authors     = ["Adam Hawkins"]
+  s.email       = ["me@broadcastingdam.com"]
+  s.homepage    = "https://github.com/adman65/http_logger"
+  s.summary     = "Log HTTP requests to MongoDB for debugging and access them via the web"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
