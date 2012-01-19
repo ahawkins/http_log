@@ -5,7 +5,7 @@ module HttpLog
     end
 
     def call(env)
-      @proxy = RequestProxy.new(env.dup)
+      @proxy = RequestProxy.new(env)
 
       if passes_filters?
         request =  HttpLog::Request.from_request(@proxy)
@@ -16,6 +16,13 @@ module HttpLog
 
         request.save
         env['http_log.request_id'] = request.id.to_s
+      end
+
+      # Wipe away all remains of anything action_dispatch does.
+      # Apparently it modifies the env in such a way that
+      # that all the paramters do not make it to the controller.
+      env.keys.select {|k| k =~ /action_dispatch/}.each do |k|
+        env.delete k
       end
 
       @app.call env

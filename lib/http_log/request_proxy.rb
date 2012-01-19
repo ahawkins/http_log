@@ -18,23 +18,9 @@ module HttpLog
       hash
     end
 
-    def url
-      base = "#{protocol}://#{http_host || server_name}#{path_info}"
-      base = "#{base}?#{query_string}" if query_string.present?
-      base
-    end
-
     private
     def action_dispatch_request
       @action_dispatch_request
-    end
-
-    def http_host
-      headers['Host']
-    end
-
-    def protocol
-      env['rack.url_scheme']
     end
   end
 end
