@@ -12,6 +12,7 @@ module HttpLog
     field :content_type, :type => String
     field :headers, :type => Hash, :default => {}
     field :params, :type => Hash, :default => {}
+    field :cookies, :type => Hash, :default => {}
 
     def self.from_request(rack)
       new do |req|
@@ -23,6 +24,7 @@ module HttpLog
         req.content_type = rack.content_type
         req.raw_post = rack.raw_post
         req.remote_ip = rack.ip
+        req.cookies = rack.cookies
       end
     end
 

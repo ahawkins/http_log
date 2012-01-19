@@ -23,10 +23,6 @@ module HttpLog
       content
     end
 
-    def user_agent
-      env['HTTP_USER_AGENT']
-    end
-
     def params
       super.merge(env['action_dispatch.request.request_parameters'] || {})
     end
