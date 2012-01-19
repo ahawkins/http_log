@@ -5,28 +5,29 @@ module HttpLog
 
     field :http_method, :type => String
     field :url, :type => String
-    field :content_type, :type => String
     field :raw_post, :type => String
     field :remote_ip, :type => String
     field :remote_host, :type => String
     field :user_agent, :type => String
-    field :accept, :type => Array
+    field :content_type, :type => String
     field :headers, :type => Hash, :default => {}
     field :params, :type => Hash, :default => {}
 
-    def self.from_request(env)
+    def self.from_request(rack)
       new do |req|
-        req.http_method = env.request_method
-        req.url = env.url
-        req.headers = env.header_hash
-        req.params = env.parameters
-        req.content_type = env.content_type
-        req.accept = env.accepts
-        req.user_agent = env.user_agent
-        req.raw_post = env.raw_post
-        req.remote_ip = env.remote_ip
-        req.remote_host = env.remote_host if env.remote_host.present?
+        req.http_method = rack.request_method
+        req.url = rack.url
+        req.headers = rack.header_hash
+        req.params = rack.params
+        req.user_agent = rack.user_agent
+        req.content_type = rack.content_type
+        req.raw_post = rack.raw_post
+        req.remote_ip = rack.ip
       end
+    end
+
+    def accept
+      headers['HTTP_ACCEPT'].present? ? headers['HTTP_ACCEPT'] : nil
     end
   end
 end

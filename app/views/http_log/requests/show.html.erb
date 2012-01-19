@@ -16,11 +16,7 @@
     </tr>
     <tr>
       <th>From</th>
-      <td>
-        <%= @log.remote_ip %>
-        <% if @log.remote_host.present? %>
-         (<%= @log.remote_host %>)
-        <% end %>
+      <td><%= @log.remote_ip %></td>
     </tr>
     <tr>
       <th>User Agent</th>

@@ -54,7 +54,14 @@ class LoggingTest < ActionDispatch::IntegrationTest
 
     req = HttpLog::Request.first
 
-    assert req.params.has_key?('foo')
+    assert_equal 'bar', req.params['foo']
+  end
+
+  test "xml encoded parameters are logged" do
+    post echo_path, %Q{<?xml ?><foo>bar</foo>}, {'CONTENT_TYPE' => 'application/xml'}
+
+    req = HttpLog::Request.first
+
     assert_equal 'bar', req.params['foo']
   end
 
@@ -80,7 +87,7 @@ class LoggingTest < ActionDispatch::IntegrationTest
 
     req = HttpLog::Request.first
 
-    assert_equal ['application/json'], req.accept
+    assert_equal 'application/json', req.accept
   end
 
   test "raw post data is logged" do
