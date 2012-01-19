@@ -17,7 +17,7 @@ gem 'http_logger'
 
 bundle install
 
-bundle exec rails g mongoid:config
+bundle exec rails g mongoid:config # if you don't already have one
 ```
 
 ## Example of What is Logged
@@ -41,6 +41,36 @@ bundle exec rails g mongoid:config
   "created_at":"2012-01-18T15:19:00+02:00",
   "updated_at":"2012-01-18T15:19:00+02:00"
 }
+```
+
+## Filtering
+
+You may also filter out specific requests. Requests to `/assets` are
+filters by **default**. You can filter requests using three different
+methods:
+
+1. Symbols (treated as file extensions)
+2. Regex (matched aganist the full URL)
+3. Blocks/Procs/Lambda/Things that `respond_to? :call`
+
+Filters are used to exclude requests. So, if a filter returns true then
+that request will **not** be logged.
+
+Here are some examples.
+
+```ruby
+# Using Symbols
+HttpLogger.filters << :jpg
+
+# Using Regex
+HttpLogger.filters << /private/
+
+# Using Blocks/Procs/Lambdas/Things that resond_to? :call
+# req is ActionDispatch::Request with some sugar
+HttpLogger.filter do |req|
+  req.env # perhaps access the rack request stuff
+  true if my_conditions_are_met
+end
 ```
 
 ## Adding More Log Information

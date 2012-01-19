@@ -1,0 +1,58 @@
+<h1>HTTP Request: <%= @log.id %></h1>
+
+<table id="summary" class="bordered-table zebra-striped">
+  <tbody>
+    <tr>
+      <th>URL</th>
+      <td><%= @log.url %></td>
+    </tr>
+    <tr>
+      <th>Method</th>
+      <td><%= @log.http_method.upcase %></td>
+    </tr>
+    <tr>
+      <th>Received</th>
+      <td><%= @log.created_at %></td>
+    </tr>
+    <tr>
+      <th>From</th>
+      <td>
+        <%= @log.remote_ip %>
+        <% if @log.remote_host.present? %>
+         (<%= @log.remote_host %>)
+        <% end %>
+    </tr>
+    <tr>
+      <th>User Agent</th>
+      <td><%= @log.user_agent %></td>
+    </tr>
+    <tr id="content-type">
+      <th>Content-Type</th>
+      <td><%= @log.content_type %></td>
+    </tr>
+    <tr id="accepts">
+      <th>Accept</th>
+      <td><%= @log.accept %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Parameters</h2>
+<pre id="parameters" class="pretty-print">
+  <%= @log.params.inspect %>
+</pre>
+
+<h2>Headers</h2>
+<table id="headers" class="bordered-table zebra-striped">
+  <% @log.headers.each do |name, value| %>
+    <tr>
+      <th><%= name %></th>
+      <td><%= value %></th>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Raw Post</h2>
+<pre id="raw-post" class="pretty-print">
+  <%= @log.raw_post %>
+</pre>

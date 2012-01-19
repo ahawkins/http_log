@@ -91,8 +91,24 @@ class LoggingTest < ActionDispatch::IntegrationTest
     assert_equal 'foo=bar', req.raw_post
   end
 
+  test "the user agent is logged" do
+    post echo_path, {}, "HTTP_USER_AGENT" => "foobar"
+
+    req = HttpLogger::Request.first
+
+    assert_equal 'foobar', req.user_agent
+  end
+
+  test "remote ip is logged" do
+    post echo_path
+
+    req = HttpLogger::Request.first
+
+    assert req.remote_ip.present?, "remote_ip should be logged"
+  end
+
   test "custom callbacks are executed" do
-    HttpLogger.with_request do |env, log|
+    HttpLogger.with_request do |req, log|
       log.headers['foo'] = 'bar'
     end
 

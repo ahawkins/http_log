@@ -1,9 +1,10 @@
 module HttpLogger
   class RequestsController < ActionController::Base
-    respond_to :xml, :json
+    respond_to :html, :xml, :json
 
     def show
-      respond_with HttpLogger::Request.find(params[:id])
+      @log = HttpLogger::Request.find params[:id]
+      respond_with @log
     end
   end
 end

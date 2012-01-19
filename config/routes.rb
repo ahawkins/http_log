@@ -1,3 +1,3 @@
 HttpLogger::Engine.routes.draw do
-  resources :requests, :only => :show, :as => :http_requests
+  resources :requests, :only => :show, :as => :http_request
 end

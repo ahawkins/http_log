@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTTP Logger</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="http-logger" style="padding-top: 60px">
+  <div class="topbar" data-scrollspy="scrollspy">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3 class="brand">HTTP Log</h3>
+        <ul class="nav">
+          <li><%= link_to "Summary", "#summary"  %></li>
+          <li><%= link_to "Content-Type", "#content-type"  %></li>
+          <li><%= link_to "Accepts", "#accepts"  %></li>
+          <li><%= link_to "Paramters", "#parameters"  %></li>
+          <li><%= link_to "Headers", "#headers"  %></li>
+          <li><%= link_to "Raw Post", "#raw-post"  %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>

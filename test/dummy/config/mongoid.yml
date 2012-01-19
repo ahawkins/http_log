@@ -1,6 +1,6 @@
 development:
   host: localhost
-  database: http_logger_test
+  database: http_logger_development
 
 test:
   host: localhost
