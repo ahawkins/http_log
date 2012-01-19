@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    http_logger (0.0.1)
+    http_log (0.0.1)
       bson_ext
       mongoid
       rails (~> 3.1)
@@ -123,5 +123,5 @@ PLATFORMS
 
 DEPENDENCIES
   database_cleaner
-  http_logger!
+  http_log!
   jquery-rails

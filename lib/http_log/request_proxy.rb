@@ -1,4 +1,4 @@
-module HttpLogger
+module HttpLog
   class RequestProxy < SimpleDelegator
     def initialize(env)
       @action_dispatch_request = ActionDispatch::Request.new(env)

@@ -9,7 +9,7 @@ require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
 Bundler.require
-require "http_logger"
+require "http_log"
 
 module Dummy
   class Application < Rails::Application

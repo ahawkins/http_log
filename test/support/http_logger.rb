@@ -2,6 +2,6 @@ class ActiveSupport::TestCase
   setup :clear_callbacks
 
   def clear_callbacks
-    HttpLogger.callbacks.clear
+    HttpLog.callbacks.clear
   end
 end

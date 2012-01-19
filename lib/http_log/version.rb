@@ -1,3 +1,3 @@
-module HttpLogger
+module HttpLog
   VERSION = "0.0.1"
 end

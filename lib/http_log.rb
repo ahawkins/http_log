@@ -1,11 +1,11 @@
 require 'mongoid'
 require 'twitter-bootstrap-rails'
-require 'http_logger/controller'
-require 'http_logger/request_proxy'
-require 'http_logger/middleware'
-require "http_logger/engine"
+require 'http_log/controller'
+require 'http_log/request_proxy'
+require 'http_log/middleware'
+require "http_log/engine"
 
-module HttpLogger
+module HttpLog
   def self.with_request(&block)
     callbacks << block
   end

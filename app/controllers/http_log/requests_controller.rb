@@ -1,9 +1,9 @@
-module HttpLogger
+module HttpLog
   class RequestsController < ActionController::Base
     respond_to :html, :xml, :json
 
     def show
-      @log = HttpLogger::Request.find params[:id]
+      @log = HttpLog::Request.find params[:id]
       respond_with @log
     end
   end

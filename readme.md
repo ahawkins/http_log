@@ -1,4 +1,4 @@
-# HTTP Logger
+# HTTP Log
 
 Logs all requests made to your application in a search format to
 MongoDB. This gem includes a middleware to log rack requests to MongodB.
@@ -13,7 +13,7 @@ This gem using Mongoid to store the models. Once you install the gem,
 run the mongoid config generator to setup the connection.
 
 ```
-gem 'http_logger'
+gem 'http_log'
 
 bundle install
 
@@ -60,14 +60,14 @@ Here are some examples.
 
 ```ruby
 # Using Symbols
-HttpLogger.filters << :jpg
+HttpLog.filters << :jpg
 
 # Using Regex
-HttpLogger.filters << /private/
+HttpLog.filters << /private/
 
 # Using Blocks/Procs/Lambdas/Things that resond_to? :call
 # req is ActionDispatch::Request with some sugar
-HttpLogger.filter do |req|
+HttpLog.filter do |req|
   req.env # perhaps access the rack request stuff
   true if my_conditions_are_met
 end
@@ -82,11 +82,11 @@ then the log is persisted.
 Let's say you want to add some more headers of your own:
 
 ```ruby
-# config/initializers/http_logger.rb
+# config/initializers/http_log.rb
 # req is an ActionDispatch::Request
-# log is the HttpLogger::Request instance
+# log is the HttpLog::Request instance
 
-HttpLogger.with_request |log, req|
+HttpLog.with_request |log, req|
   log.headers['Custom-Foo'] = 'bar'
 end
 ```
@@ -95,12 +95,12 @@ You may also add your own fields by reopneing the class and using the
 Mongoid APi.
 
 ```ruby
-# config/initializers/http_logger.rb
-class HttpLogger:Request
+# config/initializers/http_log.rb
+class HttpLog::Request
   field :developer_api_key, :type => String
 end
 
-HttpLogger.with_request |log, req|
+HttpLog.with_request |log, req|
   log.developer_api_key = req.parameters['developer_api_key']
 end
 ```

@@ -10,6 +10,6 @@
  *
  *= require_self
  *= require twitter/bootstrap
- *= require http_logger
+ *= require http_log
  *= require_tree .
 */
