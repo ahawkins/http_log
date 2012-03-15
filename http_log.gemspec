@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.1"
   s.add_dependency "mongoid"
   s.add_dependency "bson_ext"
+  s.add_dependency "sass-rails"
 
   s.add_development_dependency "database_cleaner"
 end

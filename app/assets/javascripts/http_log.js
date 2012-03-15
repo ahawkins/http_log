@@ -9,5 +9,5 @@
 //= require_tree .
 
 $(function() {
-  $("body#http-logger").scrollspy()
+  $("body#http-log").scrollspy()
 });
