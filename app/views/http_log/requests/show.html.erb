@@ -1,6 +1,8 @@
-<h1>HTTP Request: <%= @log.id %></h1>
+<div class="page-header">
+  <h1>HTTP Request: <%= @log.id %></h1>
+</div>
 
-<table id="summary" class="bordered-table zebra-striped">
+<table id="summary" class="table table-bordered table-striped">
   <tbody>
     <tr>
       <th>URL</th>
@@ -33,13 +35,19 @@
   </tbody>
 </table>
 
-<h2>Parameters</h2>
+<div class="page-header">
+  <h2>Parameters</h2>
+</div>
+
 <pre id="parameters" class="pretty-print">
   <%= @log.params.inspect %>
 </pre>
 
-<h2>Headers</h2>
-<table id="headers" class="bordered-table zebra-striped">
+<div class="page-header">
+  <h2>Heaeders</h2>
+</div>
+
+<table id="headers" class="table table-bordered table-striped">
   <% @log.headers.each do |name, value| %>
     <tr>
       <th><%= name %></th>
@@ -48,12 +56,18 @@
   <% end %>
 </table>
 
-<h2>Raw Post</h2>
-<pre id="raw-post" class="pretty-print">
+<div class="page-header">
+  <h2>Raw Post</h2>
+</div>
+
+<pre id="raw-post" class="table table-bordered table-striped">
   <%= @log.raw_post %>
 </pre>
 
-<h2>Cookies</h2>
-<pre id="cookies" class="pretty-print">
+<div class="page-header">
+  <h2>Cookies</h2>
+</div>
+
+<pre id="cookies" class="table table-bordered table-striped">
   <%= @log.cookies %>
 </pre>

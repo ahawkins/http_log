@@ -6,6 +6,10 @@
  *= require_tree .
 */
 
+#http-logger ul.nav {
+  top: 10px;
+}
+
 #http-logger table {
   table-layout: fixed;
 }
