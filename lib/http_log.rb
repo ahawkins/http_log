@@ -1,8 +1,7 @@
 require 'mongoid'
 require 'http_log/http_request'
 require 'http_log/middleware'
-require 'twitter-bootstrap-rails'
-require "http_log/railtie"
+require "http_log/engine"
 
 module HttpLog
   def self.with_request(&block)
