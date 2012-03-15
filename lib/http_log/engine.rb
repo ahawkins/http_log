@@ -19,6 +19,11 @@ module HttpLog
   class Engine < ::Rails::Engine
     isolate_namespace HttpLog
 
+    initializer "http_log.assets" do |app|
+      app.config.assets.precompile << 'http_log.js'
+      app.config.assets.precompile << 'http_log.css'
+    end
+
     initializer "http_log.middlware" do |app|
       app.middleware.use HttpLog::Middleware
     end
