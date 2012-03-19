@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.1"
+  s.add_dependency "jquery-rails"
   s.add_dependency "mongoid"
   s.add_dependency "bson_ext"
   s.add_dependency "sass-rails"

@@ -1,4 +1,5 @@
 require 'mongoid'
+require 'jquery-rails'
 require 'http_log/http_request'
 require 'http_log/middleware'
 require "http_log/engine"
