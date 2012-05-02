@@ -18,13 +18,19 @@ module HttpLog
     end
 
     def raw_post
-      content = env['rack.input'].read
-      env['rack.input'].rewind
-      content
+      result = body.read
+      body.rewind
+      result
     end
 
     def params
-      super.merge(env['action_dispatch.request.request_parameters'] || {})
+      if content_type =~ /json/ && raw_post.present?
+        super.merge(MultiJson.decode(raw_post) || {})
+      elsif content_type =~ /xml/ && raw_post.present?
+        super.merge(Hash.from_xml(raw_post) || {})
+      else
+        super
+      end
     end
   end
 end

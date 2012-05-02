@@ -1,3 +1,5 @@
+require 'pp'
+
 module HttpLog
   class Middleware
     def initialize(app)
@@ -6,6 +8,7 @@ module HttpLog
 
     def call(env)
       @proxy = HttpRequest.new(env)
+
       if passes_filters?
         request =  HttpLog::Request.from_request(@proxy)
 

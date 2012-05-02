@@ -25,7 +25,7 @@ module HttpLog
     end
 
     initializer "http_log.middlware" do |app|
-      app.middleware.use HttpLog::Middleware
+      app.middleware.insert 0, HttpLog::Middleware
     end
 
     initializer "http_log.filters" do |app|
