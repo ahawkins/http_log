@@ -1,7 +1,5 @@
 development:
-  host: localhost
-  database: http_log_development
+  uri: "mongodb://localhost/http_log_development"
 
 test:
-  host: localhost
-  database: http_log_test
+  uri: "mongodb://localhost/http_log_test"
