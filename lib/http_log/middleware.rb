@@ -2,6 +2,8 @@ require 'pp'
 
 module HttpLog
   class Middleware
+    attr_accessor :request
+
     def initialize(app)
       @app = app
     end
@@ -10,7 +12,7 @@ module HttpLog
       @proxy = HttpRequest.new(env)
 
       if passes_filters? && !@proxy.multi_part?
-        request =  HttpLog::Request.from_request(@proxy)
+        request = HttpLog::Request.from_request(@proxy)
 
         HttpLog.callbacks.each do |callback|
           callback.call @proxy, request
