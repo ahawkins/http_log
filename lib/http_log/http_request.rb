@@ -23,6 +23,10 @@ module HttpLog
       result
     end
 
+    def multi_part?
+      content_type =~ /multipart/i
+    end
+
     def params
       if content_type =~ /json/ && raw_post.present?
         super.merge(MultiJson.decode(raw_post) || {})

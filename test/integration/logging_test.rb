@@ -141,4 +141,12 @@ class LoggingTest < ActionDispatch::IntegrationTest
 
     assert_equal 'quz', req.headers['baz']
   end
+
+  test "doesn't blow up on file uploads" do
+    file = Rack::Test::UploadedFile.new(Rails.root.join("config.ru"), "application/ruby")
+
+    assert_nothing_raised do
+      post echo_path, :file => file
+    end
+  end
 end

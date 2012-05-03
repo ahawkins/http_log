@@ -9,7 +9,7 @@ module HttpLog
     def call(env)
       @proxy = HttpRequest.new(env)
 
-      if passes_filters?
+      if passes_filters? && !@proxy.multi_part?
         request =  HttpLog::Request.from_request(@proxy)
 
         HttpLog.callbacks.each do |callback|
