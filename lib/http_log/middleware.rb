@@ -1,5 +1,3 @@
-require 'pp'
-
 module HttpLog
   class Middleware
     attr_accessor :request
