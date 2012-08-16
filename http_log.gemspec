@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = HttpLog::VERSION
   s.authors     = ["Adam Hawkins"]
   s.email       = ["me@broadcastingdam.com"]
-  s.homepage    = "https://github.com/threadedlabs/http_log"
+  s.homepage    = "https://github.com/twinturbo/http_log"
   s.summary     = "Log HTTP requests to MongoDB for debugging and access them via the web"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "readme.md"]
