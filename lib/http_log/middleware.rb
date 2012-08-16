@@ -9,17 +9,23 @@ module HttpLog
     end
 
     def call(env)
-      @proxy = HttpRequest.new(env)
+      begin
+        @proxy = HttpRequest.new(env)
 
-      if passes_filters? && !@proxy.multi_part?
-        request = HttpLog::Request.from_request(@proxy)
+        if passes_filters? && !@proxy.multi_part?
+          request = HttpLog::Request.from_request(@proxy)
 
-        HttpLog.callbacks.each do |callback|
-          callback.call @proxy, request
+          HttpLog.callbacks.each do |callback|
+            callback.call @proxy, request
+          end
+
+          request.save
+          env['http_log.request_id'] = request.id.to_s
         end
-
-        request.save
-        env['http_log.request_id'] = request.id.to_s
+      rescue => ex
+        Rails.logger.warn "Request could not be saved! #{ex} -- switch to debugging logging for more info"
+        Rails.logger.debug ex.backtrace.join("\n")
+        Rails.logger.debug env.inspect
       end
 
       @app.call env
