@@ -1,5 +1,9 @@
 development:
-  uri: "mongodb://localhost/http_log_development"
+  sessions:
+    default:
+      uri: "mongodb://localhost:27017/http_log_dev"
 
 test:
-  uri: "mongodb://localhost/http_log_test"
+  sessions:
+    default:
+      uri: "mongodb://localhost:27017/http_log_test"
