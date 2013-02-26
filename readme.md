@@ -1,5 +1,15 @@
 # HTTP Log
 
+[![Build Status](https://secure.travis-ci.org/twinturbo/http_log.png?branch=master)][travis]
+[![Gem Version](https://badge.fury.io/rb/http_log.png)][gem]
+[![Code Climate](https://codeclimate.com/github/twinturbo/http_log.png)][codeclimate]
+[![Dependency Status](https://gemnasium.com/twinturbo/http_log.png?travis)][gemnasium]
+
+[gem]: https://rubygems.org/gems/http_log
+[travis]: http://travis-ci.org/twinturbo/http_log
+[gemnasium]: https://gemnasium.com/twinturbo/http_log
+[codeclimate]: https://codeclimate.com/github/twinturbo/http_log
+
 Logs all requests made to your application in a search format to
 MongoDB. This gem includes a middleware to log rack requests to MongodB.
 It also adds a header to every response indicating an `id` that can be
