@@ -20,7 +20,6 @@ module HttpLog
     isolate_namespace HttpLog
 
     initializer "http_log.assets" do |app|
-      app.config.assets.precompile << 'http_log.js'
       app.config.assets.precompile << 'http_log.css'
     end
 
