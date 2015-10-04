@@ -60,7 +60,7 @@ filters by **default**. You can filter requests using three different
 methods:
 
 1. Symbols (treated as file extensions)
-2. Regex (matched aganist the full URL)
+2. Regex (matched against the full URL)
 3. Blocks/Procs/Lambda/Things that `respond_to? :call`
 
 Filters are used to exclude requests. So, if a filter returns true then
